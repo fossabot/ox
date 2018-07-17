@@ -27,7 +27,7 @@ class BabelLibPlugin extends _Plugin.default {
       modules: this.modules,
       forceAllTransforms: true
     }), new _BabelPluginResetPlugin.default('@babel/plugin-transform-runtime', {
-      polyfill: false
+      polyfill: true
     })];
   }
 
