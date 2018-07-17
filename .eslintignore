@@ -1,0 +1,9 @@
+/node_modules/
+/bin/
+/config/
+/hook/
+/ox/
+/plugins/
+/scripts/
+/utils/
+/test-babel/lib

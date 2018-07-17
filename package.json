@@ -1,0 +1,49 @@
+{
+  "name": "@vzhdi/ox",
+  "version": "1.0.0",
+  "description": "a plugin based frontend framework used for dev and depoly",
+  "main": "index.js",
+  "bin": {
+    "ox": "./bin/index.js"
+  },
+  "scripts": {
+    "eslint": "eslint src --ext .js",
+    "build": "npm run eslint && rimraf bin config hook ox plugins scripts utils && babel src --out-dir . --copy-files",
+    "test:babel": "rimraf ./test-babel/lib && cross-env OX_ENV=test-babel node ./bin/index.js babel ./test-babel/src ./test-babel/lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vzhdi/ox.git"
+  },
+  "author": "vzhdi@qq.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vzhdi/ox/issues"
+  },
+  "homepage": "https://github.com/vzhdi/ox#readme",
+  "dependencies": {
+    "@babel/cli": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-decorators": "^7.0.0-beta.54",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/runtime": "^7.0.0-beta.54",
+    "chalk": "^2.4.1",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.0",
+    "tapable": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.54",
+    "babel-eslint": "^9.0.0-beta.3",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "rimraf": "^2.6.2"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0-beta.54"
+  }
+}
