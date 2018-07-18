@@ -9,7 +9,7 @@ it search `key.config.js` both in `buildInConfigDir` and user's `config dir`
 > you can specific user's config dir by writing the `.oxrc.js` whth { dir : { config : 'config dir' } }
 
 ```js
-// defaultBuildInConfigDir=require.path('@vzhdi/ox/config')
+// defaultBuildInConfigDir=require.resolve('@vzhdi/ox/config')
 class AssignConfigPlugin extends Plugin {
   constructor(key, buildInConfigDir = defaultBuildInConfigDir) {
     if (!key) {
@@ -27,7 +27,7 @@ class AssignConfigPlugin extends Plugin {
 
 `AutoAssignConfigPlugin` find all config files in the directory you send and use `AssignConfigPlugin` to assgin config
 
-> `ox` has buildIn use of this plugin for '@vzhdi/ox/config' and user's config dir,so you don't need to use `AssignConfigPlugin` almostly,just write your config file
+> `ox` has buildIn use of this plugin for '@vzhdi/ox/config' and user's config dir,so you don't need to use `AssignConfigPlugin` almostly,just write your config file,see [assign config](./assign-config.md) doc for how to write a config file
 
 ```js
 class AutoAssignConfigPlugin extends Plugin {

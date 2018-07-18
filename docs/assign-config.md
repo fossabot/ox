@@ -1,6 +1,12 @@
 # Assign Config
 
-we use the buildInPlugin [AssignConfigPlugin](./buildIn-plugins.md) to get the buildIn config and userConfig for an configKey
+we use the buildInPlugin [AssignConfigPlugin](./buildIn-plugins.md) to get the buildIn config and userConfig for a configKey
+
+## Create Config File
+
+in your `config dir`,create a file named like `*.config.js`,then we will automatic assign a config info with key equal to the fileName into the ox.config
+
+> eg: for app.config.js, we will assign config like { app: {/_ your config _/} }
 
 ## Plain Result
 
