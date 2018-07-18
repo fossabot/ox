@@ -1,7 +1,7 @@
 {
   "name": "@vzhdi/ox",
   "version": "1.0.0",
-  "description": "a plugin based frontend framework used for dev and depoly",
+  "description": "a plugin based frontend framework used for dev and build",
   "main": "./ox/index.js",
   "bin": {
     "ox": "./bin/index.js"

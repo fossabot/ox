@@ -44,6 +44,9 @@ class OX {
     });
     await this.hooks['config.assign'].promise(this.config, this.hooks);
 
+    // ConfigAssignDone: has got all config info
+    await this.hooks['config.assign.done'].promise(this.config, this.hooks);
+
     // Ready: all config and hooks is ready,wait to run
     await this.hooks.ready.promise(this);
 

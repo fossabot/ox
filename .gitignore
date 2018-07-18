@@ -1,3 +1,10 @@
 /node_modules/
 /*.lock
 /*.log
+/bin/
+/config/
+/hook/
+/ox/
+/plugins/
+/scripts/
+/utils/
