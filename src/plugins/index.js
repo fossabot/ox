@@ -1,5 +1,24 @@
-export { default } from './Plugin';
-export { default as AssignConfigPlugin } from './AssignConfigPlugin';
-export { default as BabelLibPlugin } from './BabelLibPlugin';
-export { default as BabelPluginResetPlugin } from './BabelPluginResetPlugin';
-export { default as BabelPresetResetPlugin } from './BabelPresetResetPlugin';
+import Plugin from './Plugin';
+import AutoAssignConfigPlugin from './AutoAssignConfigPlugin';
+import AssignConfigPlugin from './AssignConfigPlugin';
+import BabelLibPlugin from './BabelLibPlugin';
+import BabelPluginResetPlugin from './BabelPluginResetPlugin';
+import BabelPresetResetPlugin from './BabelPresetResetPlugin';
+
+export default {
+  Plugin,
+  AutoAssignConfigPlugin,
+  AssignConfigPlugin,
+  BabelLibPlugin,
+  BabelPluginResetPlugin,
+  BabelPresetResetPlugin,
+};
+
+export {
+  Plugin,
+  AutoAssignConfigPlugin,
+  AssignConfigPlugin,
+  BabelLibPlugin,
+  BabelPluginResetPlugin,
+  BabelPresetResetPlugin,
+};

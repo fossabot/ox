@@ -1,8 +1,13 @@
+import Component from './Component';
 import loginCheck from './loginCheck';
 
 /* eslint-disable class-methods-use-this */
 @loginCheck
-class PageIndex {
+class PageIndex extends Component {
+  constructor() {
+    super('PageIndex');
+  }
+
   componentDidMount() {
     this.loadData();
   }

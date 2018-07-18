@@ -1,6 +1,10 @@
+import path from 'path';
 import config from './config';
 import hooks from './hooks';
 import registPlugin from './registPlugin';
+import { AutoAssignConfigPlugin } from '../plugins';
+import resolvePath from '../utils/resolvePath';
+import keys from '../utils/keys';
 
 class OX {
   constructor(buildInPlugins = []) {
@@ -11,9 +15,20 @@ class OX {
 
   async run() {
     const {
-      config: { plugins = [] },
+      config: {
+        plugins = [],
+        [keys['rc-config']]: {
+          dir: { config: configDir },
+        },
+      },
     } = this;
-    this.buildInPlugins.concat(plugins).forEach(plugin => registPlugin(plugin, this));
+    [new AutoAssignConfigPlugin(path.resolve(__dirname, '../config'))]
+      .concat(this.buildInPlugins)
+      .concat(plugins)
+      .concat([
+        new AutoAssignConfigPlugin(resolvePath(configDir), path.resolve(__dirname, '../config')),
+      ])
+      .forEach(plugin => registPlugin(plugin, this));
 
     // ConfigAssign: to get the config info
     this.hooks['config.assign'].intercept({

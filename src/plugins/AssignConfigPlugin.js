@@ -51,7 +51,7 @@ const getConfig = (baseConfig, filePath, { config, hooks, waitDependencies }) =>
       console.log(chalk.yellow(`[OX]AssignConfigPlugin:error happened in '${path}'`));
       console.log(chalk.red(e.message));
       console.log(e);
-      process.exit(1);
+      process.exit(0);
     }
   }
   return {};
@@ -61,6 +61,10 @@ const defaultBuildInConfigDir = path.resolve(__dirname, '../config');
 
 class AssignConfigPlugin extends Plugin {
   constructor(key, buildInConfigDir = defaultBuildInConfigDir) {
+    if (!key) {
+      console.log(chalk.red('[OX]AssignConfigPlugin:`key` is required'));
+      process.exit(0);
+    }
     super(`${prefix}/assignConfig/${key}`);
     this.key = key;
     this.buildInConfigDir = buildInConfigDir;

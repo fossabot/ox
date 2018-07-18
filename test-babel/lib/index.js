@@ -7,40 +7,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _getOwnPropertyDescriptor = _interopRequireDefault(require("@babel/runtime/core-js/object/get-own-property-descriptor"));
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-var _map = _interopRequireDefault(require("@babel/runtime/core-js/map"));
+require("core-js/modules/es6.map");
 
-var _promise = _interopRequireDefault(require("@babel/runtime/core-js/promise"));
+require("core-js/modules/es6.promise");
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
-var _set = _interopRequireDefault(require("@babel/runtime/core-js/set"));
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.set");
 
 require("regenerator-runtime/runtime");
 
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
 var _applyDecoratedDescriptor2 = _interopRequireDefault(require("@babel/runtime/helpers/applyDecoratedDescriptor"));
+
+var _Component = _interopRequireDefault(require("./Component"));
 
 var _loginCheck = _interopRequireDefault(require("./loginCheck"));
 
 var _class, _class2;
 
 /* eslint-disable class-methods-use-this */
-var PageIndex = (0, _loginCheck.default)(_class = (_class2 =
-/*#__PURE__*/
-function () {
-  function PageIndex() {
-    (0, _classCallCheck2.default)(this, PageIndex);
+var PageIndex = (0, _loginCheck.default)(_class = (_class2 = class PageIndex extends _Component.default {
+  constructor() {
+    super('PageIndex');
     this.refreshData =
     /*#__PURE__*/
     _regenerator.default.mark(function refreshData() {
@@ -52,7 +48,7 @@ function () {
               return Date.now();
 
             case 2:
-              return _context.abrupt("return", new _set.default());
+              return _context.abrupt("return", new Set());
 
             case 3:
             case "end":
@@ -71,14 +67,10 @@ function () {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return new _promise.default(function (resolve) {
-                return setTimeout(function () {
-                  return resolve();
-                }, 3000);
-              });
+              return new Promise(resolve => setTimeout(() => resolve(), 3000));
 
             case 2:
-              return _context2.abrupt("return", new _map.default());
+              return _context2.abrupt("return", new Map());
 
             case 3:
             case "end":
@@ -89,37 +81,32 @@ function () {
     }));
   }
 
-  (0, _createClass2.default)(PageIndex, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.loadData();
-    }
-  }, {
-    key: "getProps",
-    value: function getProps(a, _ref2, _ref3, props) {
-      var _ref2$b = _ref2.b,
-          b = _ref2$b === void 0 ? 1 : _ref2$b,
-          c = _ref2.c;
-      var _ref3$d = _ref3.d,
-          d = _ref3$d === void 0 ? 2 : _ref3$d,
-          others = (0, _objectWithoutProperties2.default)(_ref3, ["d"]);
-      console.log((0, _objectSpread2.default)({}, others, props, {
-        a: a,
-        b: b,
-        c: {
-          c: c,
-          d: d
-        }
-      }));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return 'page index';
-    }
-  }]);
-  return PageIndex;
-}(), ((0, _applyDecoratedDescriptor2.default)(_class2.prototype, "render", [_loginCheck.default], (0, _getOwnPropertyDescriptor.default)(_class2.prototype, "render"), _class2.prototype)), _class2)) || _class;
+  componentDidMount() {
+    this.loadData();
+  }
+
+  getProps(a, _ref2, _ref3, props) {
+    var _ref2$b = _ref2.b,
+        b = _ref2$b === void 0 ? 1 : _ref2$b,
+        c = _ref2.c;
+    var _ref3$d = _ref3.d,
+        d = _ref3$d === void 0 ? 2 : _ref3$d,
+        others = (0, _objectWithoutProperties2.default)(_ref3, ["d"]);
+    console.log((0, _objectSpread2.default)({}, others, props, {
+      a,
+      b,
+      c: {
+        c,
+        d
+      }
+    }));
+  }
+
+  render() {
+    return 'page index';
+  }
+
+}, ((0, _applyDecoratedDescriptor2.default)(_class2.prototype, "render", [_loginCheck.default], Object.getOwnPropertyDescriptor(_class2.prototype, "render"), _class2.prototype)), _class2)) || _class;
 /* eslint-enable class-methods-use-this */
 
 

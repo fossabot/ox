@@ -2,13 +2,14 @@
   "name": "@vzhdi/ox",
   "version": "1.0.0",
   "description": "a plugin based frontend framework used for dev and depoly",
-  "main": "index.js",
+  "main": "./ox/index.js",
   "bin": {
     "ox": "./bin/index.js"
   },
   "scripts": {
     "eslint": "eslint src --ext .js",
-    "build": "npm run eslint && rimraf bin config hook ox plugins scripts utils && babel src --out-dir . --copy-files",
+    "clean": "rimraf bin config hook ox plugins scripts utils",
+    "build": "npm run eslint && npm run clean && babel src --out-dir . --copy-files",
     "test:babel": "rimraf ./test-babel/lib && cross-env OX_ENV=test-babel node ./bin/index.js babel ./test-babel/src ./test-babel/lib"
   },
   "repository": {

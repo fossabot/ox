@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var logined = false;
 
-var _default = function _default(fn) {
+var _default = fn => {
   if (logined) {
     return fn();
   }
