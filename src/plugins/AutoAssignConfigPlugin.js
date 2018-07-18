@@ -43,6 +43,12 @@ class AutoAssignConfigPlugin extends Plugin {
     );
   }
 
+  getHooks() {
+    return {
+      'auto.assign.config': '',
+    };
+  }
+
   apply() {}
 }
 /* eslint-enable class-methods-use-this */

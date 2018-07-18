@@ -66,11 +66,13 @@ module.exports = {
 
 ### Plugin Development
 
-[hook](./docs/hook) : view doc to see how to use hooks and define hooks.
+[hook](https://github.com/vzhdi/ox/blob/master/docs/hook.md) : view doc to see how to use hooks and define hooks.
 
-[plugin](./docs/plugin) : view doc to see how to write or use plugin.
+[plugin](https://github.com/vzhdi/ox/blob/master/docs/plugin.md) : view doc to see how to write or use plugin.
 
-[buildInPlugins](./docs/buildIn-plugins) : list the buildIn Plugins
+[buildInPlugins](https://github.com/vzhdi/ox/blob/master/docs/buildIn-plugins.md) : list the buildIn Plugins
+
+[assign config](https://github.com/vzhdi/ox/blob/master/docs/assign-config.md) :view how to assign config info
 
 ## LICENSE
 

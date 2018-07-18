@@ -8,8 +8,6 @@ it search `key.config.js` both in `buildInConfigDir` and user's `config dir`
 
 > you can specific user's config dir by writing the `.oxrc.js` whth { dir : { config : 'config dir' } }
 
-Constructor
-
 ```js
 // defaultBuildInConfigDir=require.path('@vzhdi/ox/config')
 class AssignConfigPlugin extends Plugin {
@@ -30,8 +28,6 @@ class AssignConfigPlugin extends Plugin {
 `AutoAssignConfigPlugin` find all config files in the directory you send and use `AssignConfigPlugin` to assgin config
 
 > `ox` has buildIn use of this plugin for '@vzhdi/ox/config' and user's config dir,so you don't need to use `AssignConfigPlugin` almostly,just write your config file
-
-Constructor
 
 ```js
 class AutoAssignConfigPlugin extends Plugin {
@@ -55,8 +51,6 @@ class AutoAssignConfigPlugin extends Plugin {
 
 `BabelPresetResetPlugin` give you ability to reset babel preset options
 
-Constructor
-
 ```js
 class BabelPresetResetPlugin extends Plugin {
   constructor(name, options = {}) {
@@ -70,8 +64,6 @@ class BabelPresetResetPlugin extends Plugin {
 ## BabelPluginResetPlugin
 
 `BabelPluginResetPlugin` give you ability to reset babel plugin options
-
-Constructor
 
 ```js
 class BabelPluginResetPlugin extends Plugin {
