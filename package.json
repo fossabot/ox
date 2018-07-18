@@ -10,6 +10,7 @@
     "eslint": "eslint src --ext .js",
     "clean": "rimraf bin config hook ox plugins scripts utils",
     "build": "npm run eslint && npm run clean && babel src --out-dir . --copy-files",
+    "npm-publish": "npm run build && npm publish --registry https://registry.npmjs.org --access public",
     "test:babel": "rimraf ./test-babel/lib && cross-env OX_ENV=test-babel node ./bin/index.js babel ./test-babel/src ./test-babel/lib"
   },
   "repository": {
