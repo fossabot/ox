@@ -2,6 +2,7 @@
 /*.lock
 /*.log
 /*.*rc
+!/.babelrc
 /*.*ignore
 /jsconfig.json
 /.oxrc.js
