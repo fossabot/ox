@@ -1,4 +1,4 @@
-# @vzhdi/ox &middot; ![node](https://img.shields.io/node/v/@vzhdi/ox.svg) [![npm version](https://img.shields.io/npm/v/@vzhdi/ox.svg?style=flat)](https://www.npmjs.com/package/react)
+# @vzhdi/ox &middot; ![node](https://img.shields.io/node/v/@vzhdi/ox.svg) [![npm version](https://img.shields.io/npm/v/@vzhdi/ox.svg?style=flat)](https://www.npmjs.com/package/@vzhdi/ox)
 
 > a plugin based frontend framework used for dev and build
 

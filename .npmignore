@@ -3,6 +3,7 @@
 /*.log
 /*.*rc
 /*.*ignore
+/jsconfig.json
 /.oxrc.js
 /src/
 /test-babel/
