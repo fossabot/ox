@@ -15,6 +15,7 @@
         "requireForBlockBody": false
       }
     ],
+    "object-curly-newline": "off",
     "function-paren-newline": "off"
   }
 }

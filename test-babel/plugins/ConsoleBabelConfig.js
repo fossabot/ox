@@ -1,6 +1,6 @@
 const { Plugin } = require('../../plugins');
 
-class ConsoleBabelConfigPlugin extends Plugin {
+class ConsoleBabelConfig extends Plugin {
   constructor() {
     super('@ox/test-babel/consoleBabelConfig');
   }
@@ -13,4 +13,4 @@ class ConsoleBabelConfigPlugin extends Plugin {
   }
 }
 
-module.exports = ConsoleBabelConfigPlugin;
+module.exports = ConsoleBabelConfig;

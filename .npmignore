@@ -6,3 +6,4 @@
 /.oxrc.js
 /src/
 /test-babel/
+/test-plugin/

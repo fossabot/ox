@@ -1,24 +1,17 @@
 import Plugin from './Plugin';
-import AutoAssignConfigPlugin from './AutoAssignConfigPlugin';
-import AssignConfigPlugin from './AssignConfigPlugin';
-import BabelLibPlugin from './BabelLibPlugin';
-import BabelPluginResetPlugin from './BabelPluginResetPlugin';
-import BabelPresetResetPlugin from './BabelPresetResetPlugin';
+import AutoAssignConfig from './AutoAssignConfig';
+import AssignConfig from './AssignConfig';
+import BabelLib from './BabelLib';
+import BabelPluginReset from './BabelPluginReset';
+import BabelPresetReset from './BabelPresetReset';
 
 export default {
   Plugin,
-  AutoAssignConfigPlugin,
-  AssignConfigPlugin,
-  BabelLibPlugin,
-  BabelPluginResetPlugin,
-  BabelPresetResetPlugin,
+  AutoAssignConfig,
+  AssignConfig,
+  BabelLib,
+  BabelPluginReset,
+  BabelPresetReset,
 };
 
-export {
-  Plugin,
-  AutoAssignConfigPlugin,
-  AssignConfigPlugin,
-  BabelLibPlugin,
-  BabelPluginResetPlugin,
-  BabelPresetResetPlugin,
-};
+export { Plugin, AutoAssignConfig, AssignConfig, BabelLib, BabelPluginReset, BabelPresetReset };

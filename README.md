@@ -1,4 +1,4 @@
-# @vzhdi/ox
+# @vzhdi/ox &middot; ![node](https://img.shields.io/node/v/@vzhdi/ox.svg) [![npm version](https://img.shields.io/npm/v/@vzhdi/ox.svg?style=flat)](https://www.npmjs.com/package/react)
 
 > a plugin based frontend framework used for dev and build
 
@@ -34,7 +34,11 @@ yarn add @vzhdi/ox --dev
 
 #### babel
 
-> transform javascript using babel
+> transform javascript using babel.usage: ox babel ./src ./lib
+
+#### plugin
+
+> build an ox plugin.usage: ox plugin ./src ./lib
 
 ```js
 {
@@ -72,7 +76,7 @@ module.exports = {
 
 [buildInPlugins](https://github.com/vzhdi/ox/blob/master/docs/buildIn-plugins.md) : list the buildIn Plugins
 
-[assign config](https://github.com/vzhdi/ox/blob/master/docs/assign-config.md) :view how to assign config info
+[assignConfig](https://github.com/vzhdi/ox/blob/master/docs/assign-config.md) :view how to assign config info
 
 ## LICENSE
 

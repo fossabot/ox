@@ -1,21 +1,21 @@
 import Plugin from './Plugin';
 import prefix from './helper/prefix';
-import babelPluginReset from './helper/babel-plugin-reset';
+import babelPresetReset from './helper/babel-preset-reset';
 
 let idx = 0;
-class BabelPluginResetPlugin extends Plugin {
+class BabelPresetReset extends Plugin {
   constructor(name, options = {}) {
-    super(`${prefix}/babelPluginReset/${(idx += 1)}`);
-    this.pluginName = name;
+    super(`${prefix}/babelPresetReset/${(idx += 1)}`);
+    this.presetName = name;
     this.options = options;
   }
 
   apply(ox) {
     ox.hooks['config.assign.babel.merged'].tapPromise(this.name, mergedConfig => {
-      babelPluginReset(mergedConfig, this.pluginName, this.options);
+      babelPresetReset(mergedConfig, this.presetName, this.options);
       return Promise.resolve(mergedConfig);
     });
   }
 }
 
-export default BabelPluginResetPlugin;
+export default BabelPresetReset;

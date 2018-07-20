@@ -1,10 +1,10 @@
 import Plugin from './Plugin';
 import prefix from './helper/prefix';
-import BabelPresetResetPlugin from './BabelPresetResetPlugin';
-import BabelPluginResetPlugin from './BabelPluginResetPlugin';
+import BabelPresetReset from './BabelPresetReset';
+import BabelPluginReset from './BabelPluginReset';
 
 /* eslint-disable class-methods-use-this */
-class BabelLibPlugin extends Plugin {
+class BabelLib extends Plugin {
   constructor(modules = false) {
     super(`${prefix}/babelLib`);
     this.modules = modules;
@@ -12,11 +12,11 @@ class BabelLibPlugin extends Plugin {
 
   getDependencies() {
     return [
-      new BabelPresetResetPlugin('@babel/preset-env', {
+      new BabelPresetReset('@babel/preset-env', {
         modules: this.modules,
         forceAllTransforms: true,
       }),
-      new BabelPluginResetPlugin('@babel/plugin-transform-runtime', {
+      new BabelPluginReset('@babel/plugin-transform-runtime', {
         polyfill: true,
       }),
     ];
@@ -26,4 +26,4 @@ class BabelLibPlugin extends Plugin {
 }
 /* eslint-enable class-methods-use-this */
 
-export default BabelLibPlugin;
+export default BabelLib;

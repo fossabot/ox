@@ -1,5 +1,5 @@
-const { BabelPresetResetPlugin } = require('./plugins');
-const ConsoleBabelConfigPlugin = require('./test-babel/plugins/ConsoleBabelConfigPlugin');
+const { BabelPresetReset } = require('./plugins');
+const ConsoleBabelConfig = require('./test-babel/plugins/ConsoleBabelConfig');
 
 const oxEnv = process.env.OX_ENV;
 module.exports = {
@@ -8,10 +8,10 @@ module.exports = {
   },
   plugins: [
     oxEnv === 'test-babel'
-      ? new BabelPresetResetPlugin('@babel/preset-env', {
+      ? new BabelPresetReset('@babel/preset-env', {
           modules: 'commonjs',
         })
       : null,
-    oxEnv === 'test-babel' ? new ConsoleBabelConfigPlugin() : null,
+    oxEnv === 'test-babel' ? new ConsoleBabelConfig() : null,
   ],
 };

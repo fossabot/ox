@@ -1,6 +1,6 @@
 # Assign Config
 
-we use the buildInPlugin [AssignConfigPlugin](./buildIn-plugins.md) to get the buildIn config and userConfig for a configKey
+we use the buildInPlugin [AssignConfig](./buildIn-plugins.md) to get the buildIn config and userConfig for a configKey
 
 ## Create Config File
 

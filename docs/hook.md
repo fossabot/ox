@@ -64,10 +64,10 @@ class YourPlugin extends Plugin {
 
 ## BuildInPlugins Hooks
 
-### AssignConfigPlugin
+### AssignConfig
 
 ```js
-class AssignConfigPlugin extends Plugin
+class AssignConfig extends Plugin
   getHooks(){
     /* itemKey is the config key name,eg
      * app,babel,webpack

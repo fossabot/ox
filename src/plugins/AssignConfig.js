@@ -34,7 +34,7 @@ const getWaitDependencies = (config, hooks) => {
   return waitDependencies;
 };
 
-const getConfig = (baseConfig, filePath, { config, hooks, waitDependencies }) => {
+export const getConfig = (baseConfig, filePath, { config, hooks, waitDependencies }) => {
   if (fs.existsSync(filePath)) {
     try {
       /* eslint-disable global-require,import/no-dynamic-require */
@@ -48,7 +48,7 @@ const getConfig = (baseConfig, filePath, { config, hooks, waitDependencies }) =>
       }
       return fn;
     } catch (e) {
-      console.log(chalk.yellow(`[OX]AssignConfigPlugin:error happened in '${path}'`));
+      console.log(chalk.yellow(`[OX]PluginAssignConfig:error happened in '${path}'`));
       console.log(chalk.red(e.message));
       console.log(e);
       process.exit(0);
@@ -59,10 +59,10 @@ const getConfig = (baseConfig, filePath, { config, hooks, waitDependencies }) =>
 
 const defaultBuildInConfigDir = path.resolve(__dirname, '../config');
 
-class AssignConfigPlugin extends Plugin {
+class AssignConfig extends Plugin {
   constructor(key, buildInConfigDir = defaultBuildInConfigDir) {
     if (!key) {
-      console.log(chalk.red('[OX]AssignConfigPlugin:`key` is required'));
+      console.log(chalk.red('[OX]PluginAssignConfig:`key` is required'));
       process.exit(0);
     }
     super(`${prefix}/assignConfig/${key}`);
@@ -98,7 +98,7 @@ class AssignConfigPlugin extends Plugin {
       );
       buildInConfig = await hooks[`config.assign.${this.key}.userConfig.before`].promise(
         buildInConfig,
-        { config, hooks },
+        { config, hooks, waitDependencies },
       );
       const {
         [keys['rc-config']]: {
@@ -133,4 +133,4 @@ class AssignConfigPlugin extends Plugin {
   }
 }
 
-export default AssignConfigPlugin;
+export default AssignConfig;

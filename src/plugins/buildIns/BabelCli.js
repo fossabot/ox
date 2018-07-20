@@ -5,9 +5,10 @@ import prefix from '../helper/prefix';
 import guidKey from '../helper/babel-cli-guid-key';
 
 /* eslint-disable class-methods-use-this */
-class BabelCliPlugin extends Plugin {
-  constructor() {
+class BabelCli extends Plugin {
+  constructor(isBuildPlugin = false) {
     super(`${prefix}/buildIns/babelCli`);
+    this.isBuildPlugin = isBuildPlugin;
   }
 
   apply(ox) {
@@ -38,7 +39,13 @@ class BabelCliPlugin extends Plugin {
     await new Promise(resolve =>
       buildFiles.on('close', code => {
         if (code === 0) {
-          console.log(chalk.green(`build lib files from '${srcDir}' to '${outerDir}' success`));
+          console.log(
+            chalk.green(
+              `${
+                this.isBuildPlugin ? 'build OX plugin' : 'babel compile files'
+              } from '${srcDir}' to '${outerDir}' success`,
+            ),
+          );
           resolve();
         }
       }),
@@ -47,4 +54,4 @@ class BabelCliPlugin extends Plugin {
 }
 /* eslint-enable class-methods-use-this */
 
-export default BabelCliPlugin;
+export default BabelCli;

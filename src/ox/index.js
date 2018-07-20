@@ -1,34 +1,40 @@
 import path from 'path';
-import config from './config';
+import getConfig from './getConfig';
 import hooks from './hooks';
 import registPlugin from './registPlugin';
-import { AutoAssignConfigPlugin } from '../plugins';
+import { AutoAssignConfig } from '../plugins';
 import resolvePath from '../utils/resolvePath';
 import keys from '../utils/keys';
 
 class OX {
-  constructor(buildInPlugins = []) {
+  constructor(script, buildInPlugins = []) {
+    this.script = script;
     this.buildInPlugins = buildInPlugins;
-    this.config = config;
+    this.config = script === 'plugin' ? {} : getConfig();
     this.hooks = hooks;
   }
 
   async run() {
-    const {
-      config: {
-        plugins = [],
-        [keys['rc-config']]: {
-          dir: { config: configDir },
+    if (this.script === 'plugin') {
+      // to build ox plugin , only use the buildInPlugins and config
+      this.buildInPlugins.forEach(plugin => registPlugin(plugin, this));
+    } else {
+      const {
+        config: {
+          plugins = [],
+          [keys['rc-config']]: {
+            dir: { config: configDir },
+          },
         },
-      },
-    } = this;
-    [new AutoAssignConfigPlugin(path.resolve(__dirname, '../config'))]
-      .concat(this.buildInPlugins)
-      .concat(plugins)
-      .concat([
-        new AutoAssignConfigPlugin(resolvePath(configDir), path.resolve(__dirname, '../config')),
-      ])
-      .forEach(plugin => registPlugin(plugin, this));
+      } = this;
+      [new AutoAssignConfig(path.resolve(__dirname, '../config'))]
+        .concat(this.buildInPlugins)
+        .concat(plugins)
+        .concat([
+          new AutoAssignConfig(resolvePath(configDir), path.resolve(__dirname, '../config')),
+        ])
+        .forEach(plugin => registPlugin(plugin, this));
+    }
 
     // ConfigAssign: to get the config info
     this.hooks['config.assign'].intercept({

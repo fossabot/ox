@@ -1,8 +1,8 @@
 # BuildIn Plugins
 
-## AssignConfigPlugin
+## AssignConfig
 
-`AssignConfigPlugin` can assign one `key`'s configInfo into the ox `config` object
+`AssignConfig` can assign one `key`'s configInfo into the ox `config` object
 
 it search `key.config.js` both in `buildInConfigDir` and user's `config dir`
 
@@ -10,10 +10,10 @@ it search `key.config.js` both in `buildInConfigDir` and user's `config dir`
 
 ```js
 // defaultBuildInConfigDir=require.resolve('@vzhdi/ox/config')
-class AssignConfigPlugin extends Plugin {
+class AssignConfig extends Plugin {
   constructor(key, buildInConfigDir = defaultBuildInConfigDir) {
     if (!key) {
-      console.log(chalk.red('[OX]AssignConfigPlugin:`key` is required'));
+      console.log(chalk.red('[OX]PluginAssignConfig:`key` is required'));
       process.exit(0);
     }
     super(`${prefix}/assignConfig/${key}`);
@@ -23,17 +23,21 @@ class AssignConfigPlugin extends Plugin {
 }
 ```
 
-## AutoAssignConfigPlugin
+> `ox` has buildIn use of `AutoAssignConfig` for '@vzhdi/ox/config' and user's config dir,so if not a plugin developer you should not use this plugin,just write your app's config file,see [assign config](./assign-config.md) doc for how to write a config file
 
-`AutoAssignConfigPlugin` find all config files in the directory you send and use `AssignConfigPlugin` to assgin config
+## AutoAssignConfig
 
-> `ox` has buildIn use of this plugin for '@vzhdi/ox/config' and user's config dir,so you don't need to use `AssignConfigPlugin` almostly,just write your config file,see [assign config](./assign-config.md) doc for how to write a config file
+`AutoAssignConfig` find all config files in the directory you send and use `AssignConfig` to assgin config
+
+This plugin is build for plugin developer to add new config keys ,or reset the config value which is registed by `ox` or other plugins
+
+> for app developer,don't use this plugin
 
 ```js
-class AutoAssignConfigPlugin extends Plugin {
+class AutoAssignConfig extends Plugin {
   constructor(configDir, buildInConfigDir) {
     if (!configDir) {
-      console.log(chalk.red('[OX]AutoAssignConfigPlugin:`configDir` is required'));
+      console.log(chalk.red('[OX]PluginAutoAssignConfig:`configDir` is required'));
       process.exit(0);
     }
     const sha1 = crypto
@@ -47,12 +51,12 @@ class AutoAssignConfigPlugin extends Plugin {
 }
 ```
 
-## BabelPresetResetPlugin
+## BabelPresetReset
 
-`BabelPresetResetPlugin` give you ability to reset babel preset options
+`BabelPresetReset` give you ability to reset babel preset options
 
 ```js
-class BabelPresetResetPlugin extends Plugin {
+class BabelPresetReset extends Plugin {
   constructor(name, options = {}) {
     super(`${prefix}/babelPresetReset/${(idx += 1)}`);
     this.presetName = name;
@@ -61,12 +65,12 @@ class BabelPresetResetPlugin extends Plugin {
 }
 ```
 
-## BabelPluginResetPlugin
+## BabelPluginReset
 
-`BabelPluginResetPlugin` give you ability to reset babel plugin options
+`BabelPluginReset` give you ability to reset babel plugin options
 
 ```js
-class BabelPluginResetPlugin extends Plugin {
+class BabelPluginReset extends Plugin {
   constructor(name, options = {}) {
     super(`${prefix}/babelPluginReset/${(idx += 1)}`);
     this.pluginName = name;

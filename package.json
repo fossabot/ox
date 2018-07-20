@@ -11,6 +11,7 @@
     "clean": "rimraf bin config hook ox plugins scripts utils",
     "build": "npm run eslint && npm run clean && babel src --out-dir . --copy-files",
     "npm-publish": "npm run build && npm publish --registry https://registry.npmjs.org --access public",
+    "test:plugin": "rimraf ./test-plugin/lib && node ./bin/index.js plugin ./test-plugin/src ./test-plugin/lib",
     "test:babel": "rimraf ./test-babel/lib && cross-env OX_ENV=test-babel node ./bin/index.js babel ./test-babel/src ./test-babel/lib"
   },
   "repository": {
@@ -23,6 +24,9 @@
     "url": "https://github.com/vzhdi/ox/issues"
   },
   "homepage": "https://github.com/vzhdi/ox#readme",
+  "engines": {
+    "node": ">= 10.6.0"
+  },
   "dependencies": {
     "@babel/cli": "^7.0.0-beta.54",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
