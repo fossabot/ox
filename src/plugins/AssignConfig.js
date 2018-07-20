@@ -60,6 +60,8 @@ export const getConfig = (baseConfig, filePath, { config, hooks, waitDependencie
 const defaultBuildInConfigDir = path.resolve(__dirname, '../config');
 
 class AssignConfig extends Plugin {
+  static getConfig = getConfig;
+
   constructor(key, buildInConfigDir = defaultBuildInConfigDir) {
     if (!key) {
       console.log(chalk.red('[OX]PluginAssignConfig:`key` is required'));
@@ -71,26 +73,41 @@ class AssignConfig extends Plugin {
   }
 
   getHooks() {
+    const userConfigBeforeHook = new AsyncSeriesWaterfallHook(['buildInConfig', 'others']);
+    const userConfigDoneHook = new AsyncSeriesWaterfallHook(['userConfig', 'others']);
+    const mergedHook = new AsyncSeriesWaterfallHook(['mergedConfig', 'others']);
+    [userConfigBeforeHook, userConfigDoneHook, mergedHook].forEach(hook => {
+      hook.intercept({
+        register(tapInfo) {
+          const { fn, ...others } = tapInfo;
+          return {
+            ...others,
+            fn: function hooksConfigAssignModify(baseConfig, ...args) {
+              return fn(baseConfig, ...args).then(config => {
+                if (config) {
+                  return mergeConfig(baseConfig, config);
+                }
+                return baseConfig;
+              });
+            },
+          };
+        },
+      });
+    });
     return {
-      [`config.assign.${this.key}.userConfig.before`]: new AsyncSeriesWaterfallHook([
-        'buildInConfig',
-        'others',
-      ]),
-      [`config.assign.${this.key}.userConfig.done`]: new AsyncSeriesWaterfallHook([
-        'userConfig',
-        'others',
-      ]),
-      [`config.assign.${this.key}.merged`]: new AsyncSeriesWaterfallHook([
-        'mergedConfig',
-        'others',
-      ]),
+      [`config.assign.${this.key}.userConfig.before`]: userConfigBeforeHook,
+      [`config.assign.${this.key}.userConfig.done`]: userConfigDoneHook,
+      [`config.assign.${this.key}.merged`]: mergedHook,
       [`config.assign.${this.key}.done`]: new AsyncParallelHook(['config', 'hooks']),
     };
   }
 
   apply(ox) {
+    let waitDependencies = null;
     ox.hooks['config.assign'].tapPromise(this.name, async (config, hooks) => {
-      const waitDependencies = getWaitDependencies(config, hooks);
+      if (!waitDependencies) {
+        waitDependencies = getWaitDependencies(config, hooks);
+      }
       let buildInConfig = await getConfig(
         {},
         path.resolve(this.buildInConfigDir, `./${this.key}.config.js`),
@@ -118,6 +135,7 @@ class AssignConfig extends Plugin {
         buildInConfig,
         config,
         hooks,
+        waitDependencies,
       });
       let mergedConfig = mergeConfig(buildInConfig, userConfig);
       mergedConfig = await hooks[`config.assign.${this.key}.merged`].promise(mergedConfig, {
@@ -125,6 +143,7 @@ class AssignConfig extends Plugin {
         buildInConfig,
         config,
         hooks,
+        waitDependencies,
       });
       Object.assign(config, { [this.key]: mergedConfig });
       HasAssigned[this.key] = true;
