@@ -47,6 +47,11 @@ class AutoAssignConfig extends Plugin {
     super(`${prefix}/autoAssignConfig/${sha1}`);
     this.configDir = configDir;
     this.buildInConfigDir = buildInConfigDir || configDir;
+    /*
+    * some plugins may require merge the other plugins's buildIn config
+    * if key has registed and buildInConfigDir=== configDir then add on needMergedKey
+    */
+    this.needMergedKeys = new Set();
   }
 }
 ```
