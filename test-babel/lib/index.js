@@ -7,23 +7,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _getOwnPropertyDescriptor = _interopRequireDefault(require("@babel/runtime/core-js/object/get-own-property-descriptor"));
+
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
 
-require("core-js/modules/es6.map");
+var _map = _interopRequireDefault(require("@babel/runtime/core-js/map"));
 
-require("core-js/modules/es6.promise");
+var _promise = _interopRequireDefault(require("@babel/runtime/core-js/promise"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
-require("core-js/modules/web.dom.iterable");
-
-require("core-js/modules/es6.set");
-
-require("regenerator-runtime/runtime");
+var _set = _interopRequireDefault(require("@babel/runtime/core-js/set"));
 
 var _applyDecoratedDescriptor2 = _interopRequireDefault(require("@babel/runtime/helpers/applyDecoratedDescriptor"));
 
@@ -48,7 +46,7 @@ var PageIndex = (0, _loginCheck.default)(_class = (_class2 = class PageIndex ext
               return Date.now();
 
             case 2:
-              return _context.abrupt("return", new Set());
+              return _context.abrupt("return", new _set.default());
 
             case 3:
             case "end":
@@ -67,10 +65,10 @@ var PageIndex = (0, _loginCheck.default)(_class = (_class2 = class PageIndex ext
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return new Promise(resolve => setTimeout(() => resolve(), 3000));
+              return new _promise.default(resolve => setTimeout(() => resolve(), 3000));
 
             case 2:
-              return _context2.abrupt("return", new Map());
+              return _context2.abrupt("return", new _map.default());
 
             case 3:
             case "end":
@@ -106,7 +104,7 @@ var PageIndex = (0, _loginCheck.default)(_class = (_class2 = class PageIndex ext
     return 'page index';
   }
 
-}, ((0, _applyDecoratedDescriptor2.default)(_class2.prototype, "render", [_loginCheck.default], Object.getOwnPropertyDescriptor(_class2.prototype, "render"), _class2.prototype)), _class2)) || _class;
+}, ((0, _applyDecoratedDescriptor2.default)(_class2.prototype, "render", [_loginCheck.default], (0, _getOwnPropertyDescriptor.default)(_class2.prototype, "render"), _class2.prototype)), _class2)) || _class;
 /* eslint-enable class-methods-use-this */
 
 

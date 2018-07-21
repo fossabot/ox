@@ -3,12 +3,12 @@
     [
       "@babel/preset-env",
       {
-        "loose": false,
-        "modules": "commonjs",
         "targets": {
           "node": "10.6.0"
         },
-        "useBuiltIns": "usage"
+        "loose": false,
+        "modules": "commonjs",
+        "useBuiltIns": false
       }
     ]
   ],
@@ -16,7 +16,11 @@
     [
       "@babel/plugin-transform-runtime",
       {
-        "polyfill": false
+        "helpers": true,
+        "polyfill": true,
+        "regenerator": true,
+        "useBuiltIns": false,
+        "useESModules": false
       }
     ],
     ["@babel/plugin-proposal-decorators", { "legacy": true }],

@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _promise = _interopRequireDefault(require("@babel/runtime/core-js/promise"));
+
 var _fsExtra = _interopRequireDefault(require("fs-extra"));
 
 var _path = _interopRequireDefault(require("path"));
@@ -21,7 +23,7 @@ class TestPlugin extends _plugins.Plugin {
   }
 
   apply(ox) {
-    ox.hooks['config.assign'].tapPromise(this.name, () => new Promise(resolve => {
+    ox.hooks['config.assign'].tapPromise(this.name, () => new _promise.default(resolve => {
       _fsExtra.default.readFile(_path.default.resolve(__dirname, '../../.babelrc'), (err, buff) => {
         if (!err) {
           resolve({

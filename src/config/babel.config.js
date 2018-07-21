@@ -8,9 +8,8 @@ export default (baseConfig, { waitDependencies }) =>
         {
           targets: appConfig.runtime,
           loose: false,
-          modules: false,
-          forceAllTransforms: false,
-          useBuiltIns: 'usage',
+          modules: 'commonjs',
+          useBuiltIns: false,
         },
       ],
     ],
@@ -18,7 +17,11 @@ export default (baseConfig, { waitDependencies }) =>
       [
         '@babel/plugin-transform-runtime',
         {
-          polyfill: false,
+          helpers: true,
+          polyfill: true,
+          regenerator: true,
+          useBuiltIns: false,
+          useESModules: false,
         },
       ],
       ['@babel/plugin-proposal-decorators', { legacy: true }],
