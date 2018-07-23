@@ -13,10 +13,16 @@ class BabelLib extends Plugin {
   getDependencies() {
     return [
       new BabelPresetReset('@babel/preset-env', {
+        loose: false,
         modules: this.modules,
+        useBuiltIns: false,
         forceAllTransforms: true,
       }),
       new BabelPluginReset('@babel/plugin-transform-runtime', {
+        helpers: true,
+        polyfill: true,
+        regenerator: true,
+        useBuiltIns: false,
         useESModules: this.modules === false,
       }),
     ];

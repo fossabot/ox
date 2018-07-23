@@ -1,3 +1,4 @@
+process.env.OX_SCRIPT = 'babel';
 process.env.NODE_ENV = 'production';
 /* eslint-disable import/first */
 import OX from '../ox';
