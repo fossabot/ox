@@ -1,4 +1,5 @@
 # @vzhdi/ox &middot; ![node](https://img.shields.io/node/v/@vzhdi/ox.svg) [![npm version](https://img.shields.io/npm/v/@vzhdi/ox.svg?style=flat)](https://www.npmjs.com/package/@vzhdi/ox)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fvzhdi%2Fox.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fvzhdi%2Fox?ref=badge_shield)
 
 > a plugin based frontend framework used for dev and build
 
@@ -81,3 +82,6 @@ module.exports = {
 ## LICENSE
 
 MIT
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fvzhdi%2Fox.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fvzhdi%2Fox?ref=badge_large)
